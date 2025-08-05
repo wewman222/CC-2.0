@@ -84,9 +84,7 @@
 		START_PROCESSING(SSincone, client)
 
 /client/proc/update_cone()
-	if(mob)
-		var/mob/user = usr
-		mob.update_cone()
+	mob?.update_cone()
 
 /mob/proc/__cb_lift_fovcone_image_plane(mob/host_mob, mutable_appearance/modifying)
 	modifying.plane = GAME_PLANE_UPPER

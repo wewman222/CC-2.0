@@ -50,7 +50,7 @@
 		// try not to harddel; byond scans active procs faster.
 		var/image/unreferencing = renderer
 		renderer = null
-		qdel(renderer) 
+		qdel(unreferencing) 
 
 /** 
  * Adds an alteration hook with a given priority.
