@@ -112,7 +112,7 @@
 	// are lazy and just clear images all the time, so, just call this lol
 	var/mob/our_parent_mob = parent
 	var/client/maybe_client = our_parent_mob.client
-	maybe_client.images |= renderer
+	maybe_client?.images |= renderer
 
 /// quite a mouthful
 /datum/component_self_image_override_entry
