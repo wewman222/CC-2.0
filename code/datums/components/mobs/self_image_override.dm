@@ -22,7 +22,7 @@
  */
 /datum/component/self_image_override
 	/// associative list key to /datum/component_self_image_override_entry; lower priority is applied first
-	var/list/alter_entries
+	var/list/alter_entries = list()
 	/// our rendering image
 	var/image/renderer
 
