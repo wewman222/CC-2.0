@@ -32,6 +32,9 @@
 	client.screen = list()				//remove hud items just in case
 	client.images = list()
 
+	var/datum/component/self_image_override/maybe_self_image_override_component = mob.GetComponent(/datum/component/self_image_override)
+	maybe_self_image_override_component?.ensure_image_is_on_client()
+
 	if(!hud_used)
 		create_mob_hud()
 	if(hud_used && client && client.prefs)
