@@ -2,6 +2,7 @@
 /client
 	var/list/hidden_atoms = list()
 	var/list/hidden_mobs = list()
+	// seemingly a list of images to relay things you should always see above the vision cone.
 	var/list/hidden_images = list()
 
 /mob
@@ -82,13 +83,12 @@
 			hud_used.fov_blocker.dir = src.dir
 		START_PROCESSING(SSincone, client)
 
-/client/proc/update_cone() //This is where the sprite decides to return to the same size, some utter bullshit
-	if(mob)
-		var/mob/user = usr
-		mob.update_cone()
+/client/proc/update_cone()
+	mob?.update_cone()
 
-
-
+/mob/proc/__cb_lift_fovcone_image_plane(mob/host_mob, mutable_appearance/modifying)
+	modifying.plane = GAME_PLANE_UPPER
+	
 /mob/living/update_cone()
 	for(var/hidden_hud in client.hidden_images)
 		client.images -= hidden_hud
@@ -96,15 +96,6 @@
 	if(hud_used?.fov)
 		if(hud_used.fov.alpha == 0)
 			return
-	var/image/I = image(src, src)
-	I.override = 1
-	I.plane = GAME_PLANE_UPPER
-	I.layer = layer
-	I.pixel_x = 0
-	I.pixel_y = 0
-	client.images += I
-	client.hidden_images += I
-	I.appearance_flags = RESET_TRANSFORM|KEEP_TOGETHER|PIXEL_SCALE
 	if(buckled)
 		var/image/IB = image(buckled, buckled)
 		IB.override = 1
@@ -269,8 +260,10 @@
 			return hide_cone()
 	return show_cone()
 
-
 /mob/proc/update_fov_angles()
+	var/datum/component/self_image_override/self_image_handler = LoadComponent(/datum/component/self_image_override)
+	self_image_handler.remove_alteration_hook("fov-plane-lift")
+
 	fovangle = initial(fovangle)
 	if(ishuman(src) && fovangle)
 		var/mob/living/carbon/human/H = src
@@ -291,6 +284,11 @@
 		return
 	if(!hud_used.fov_blocker)
 		return
+
+	// at this point we know they are going to have fov rendering so let's put in a hook to lift
+	// themselves up
+	self_image_handler.add_alteration_hook("fov-plane-lift", CALLBACK(src, PROC_REF(__cb_lift_fovcone_image_plane)), 100000)
+
 	if(fovangle & FOV_DEFAULT)
 		if(fovangle & FOV_RIGHT)
 			if(fovangle & FOV_LEFT)

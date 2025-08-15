@@ -214,6 +214,7 @@
 		if(LAZYLEN(po)){\
 			A.overlays |= po;\
 		}\
+		SEND_SIGNAL(A, COMSIG_ATOM_COMPILED_OVERLAYS);\
 		for(var/I in A.alternate_appearances){\
 			var/datum/atom_hud/alternate_appearance/AA = A.alternate_appearances[I];\
 			if(AA.transfer_overlays){\

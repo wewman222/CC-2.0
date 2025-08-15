@@ -600,6 +600,7 @@
 #include "code\datums\components\crafting\crafting.dm"
 #include "code\datums\components\crafting\recipes.dm"
 #include "code\datums\components\decals\blood.dm"
+#include "code\datums\components\mobs\self_image_override.dm"
 #include "code\datums\components\storage\storage.dm"
 #include "code\datums\components\storage\storage_types.dm"
 #include "code\datums\components\storage\concrete\_concrete.dm"
