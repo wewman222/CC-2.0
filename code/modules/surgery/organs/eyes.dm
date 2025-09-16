@@ -151,6 +151,10 @@
 	name = "undead eyes"
 	desc = ""
 
+/obj/item/organ/eyes/night_vision/feral
+	name = "feral eyes"
+	desc = ""
+
 /obj/item/organ/eyes/construct
 	name = "construct eyes"
 	desc = "Some beast's eyes, preserved through artifice and with magical rock embedded in their back. Seems to fit a construct's head."

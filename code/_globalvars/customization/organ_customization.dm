@@ -27,6 +27,12 @@ GLOBAL_LIST_INIT(named_breast_sizes, list(
 	"gargantuan" = 8,
 	"colossal" = 9,
 	"ungodly big" = 10,
+	"gigantic" = 11,
+	"titanic" = 12,
+	"obscenely large" = 13,
+	"over-endowed" = 14,
+	"unholy" = 15,
+	"baothan-sized" = 16,
 ))
 
 GLOBAL_LIST_INIT(named_belly_sizes, list(
@@ -70,12 +76,13 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 		.[type] = new type()
 	return .
 
-/proc/color_pick_sanitized(mob/user, description, title, default_value, min_tag = 0.07, max_tag = 0.80)
+/proc/color_pick_sanitized(mob/user, description, title, default_value)
 	var/color = input(user, description, title, default_value) as color|null
-	var/good = TRUE
+	//var/good = TRUE
 	if(!color)
 		return
 	color = sanitize_hexcolor(color)
+	/*
 	var/list/hsl = rgb2hsl(hex2num(copytext(color,1,3)),hex2num(copytext(color,3,5)),hex2num(copytext(color,5,7)))
 	if(hsl[3] < min_tag)
 		to_chat(user, span_warning("The picked color is too dark! Raising Luminosity to minimum 20%."))
@@ -87,6 +94,7 @@ GLOBAL_LIST_INIT(customizers, build_customizers())
 		good = FALSE
 	if(!good)
 		var/list/rgb = hsl2rgb(arglist(hsl))
-		color = sanitize_hexcolor("[num2hex(rgb[1])][num2hex(rgb[2])][num2hex(rgb[3])]")
+		color = sanitize_hexcolor("[num2hex(rgb[1])][num2hex(rgb[2])][num2hex(rgb[3])]") 
+	*/
 
 	return color

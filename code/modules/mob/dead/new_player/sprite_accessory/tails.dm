@@ -154,6 +154,10 @@
 	icon_state = "lab"
 	can_wag = TRUE
 
+/datum/sprite_accessory/tail/large_snake
+	name = "Large Snake"
+	icon_state = "large_snake"
+
 /datum/sprite_accessory/tail/murid
 	name = "Murid"
 	icon_state = "murid"

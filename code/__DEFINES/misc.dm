@@ -77,7 +77,9 @@
 
 //AND -1 MEANS "ABOVE", OK?, OK!?!
 #define ABOVE_SHOES_LAYER			(SHOES_LAYER-1)
-#define ABOVE_BODY_FRONT_LAYER		(BODY_FRONT_LAYER-1)
+#define ABOVE_BODY_FRONT_LAYER		(BODY_FRONT_LAYER-3)
+#define BODY_FRONTER_LAYER			(BODY_FRONT_LAYER-1) // Put it on top of the top, silly!
+#define BODY_FRONTEST_LAYER			(BODY_FRONT_LAYER-2)
 
 //Security levels
 #define SEC_LEVEL_GREEN	0

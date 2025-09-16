@@ -394,7 +394,7 @@
 	req_bar = /obj/item/ingot/copper
 	created_item = /obj/item/cooking/platter/copper
 	craftdiff = 1
-	createditem_num = 1
+	createditem_num = 2
 
 /datum/anvil_recipe/tools/platter/tin
 	name = "2x Platters (Tin)"

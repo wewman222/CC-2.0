@@ -31,6 +31,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 /area/rogue/Entered(mob/living/carbon/human/guy)
 
 	. = ..()
+	if((src.town_area == TRUE) && HAS_TRAIT(guy, TRAIT_FERAL) && !guy.has_status_effect(/datum/status_effect/buff/feraldebuff)) //feral creatures don't do well in town
+		guy.apply_status_effect(/datum/status_effect/buff/feraldebuff)
+
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
 	if((src.tavern_area == TRUE) && HAS_TRAIT(guy, TRAIT_TAVERN_FIGHTER) && !guy.has_status_effect(/datum/status_effect/buff/barkeepbuff)) // THE FIGHTER
 		guy.apply_status_effect(/datum/status_effect/buff/barkeepbuff)
 
@@ -45,6 +51,12 @@ GLOBAL_LIST_INIT(roguetown_areas_typecache, typecacheof(/area/rogue/indoors/town
 	. = ..()
 	if((src.cell_area == TRUE) && HAS_TRAIT(guy, TRAIT_DUNGEONMASTER) && !guy.has_status_effect(/datum/status_effect/buff/dungeoneerbuff)) // Dungeoneer
 		guy.apply_status_effect(/datum/status_effect/buff/dungeoneerbuff)
+
+/area/rogue/Entered(mob/living/carbon/human/guy)
+
+	. = ..()
+	if((src.town_area == TRUE) && HAS_TRAIT(guy, TRAIT_NECRAS_ABATEMENT) && !guy.has_status_effect(/datum/status_effect/buff/deadite_pacified)) //zombie pacification
+		guy.apply_status_effect(/datum/status_effect/buff/deadite_pacified)
 
 /area/rogue/indoors
 	name = "indoors rt"

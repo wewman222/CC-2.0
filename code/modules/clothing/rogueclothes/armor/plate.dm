@@ -188,8 +188,9 @@
 /obj/item/clothing/suit/roguetown/armor/plate/full/bikini
 	name = "full-plate corset"
 	desc = "Breastplate, pauldrons, couters, cuisses... did you forget something?"
+	mob_overlay_icon = 'modular_causticcove/icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "platekini"
-	allowed_sex = list(FEMALE)
+	allowed_sex = list(FEMALE, MALE)
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	equip_delay_self = 8 SECONDS
 	unequip_delay_self = 8 SECONDS
@@ -288,11 +289,12 @@
 	name = "half-plate corslet"
 	desc = "A high breastplate and hip armor allowing flexibility and great protection, save for the stomach."
 	body_parts_covered = CHEST|GROIN
+	mob_overlay_icon = 'modular_causticcove/icons/roguetown/clothing/onmob/armor.dmi'
 	icon_state = "halfplatekini"
 	item_state = "halfplatekini"
 	armor = ARMOR_CUIRASS // Identical to steel cuirass, but covering the groin instead of the vitals.
 	max_integrity = ARMOR_INT_CHEST_MEDIUM_STEEL	// Identical to steel cuirasss. Same steel price.
-	allowed_sex = list(FEMALE)
+	allowed_sex = list(FEMALE, MALE)
 	armor_class = ARMOR_CLASS_MEDIUM
 	smelt_bar_num = 2
 

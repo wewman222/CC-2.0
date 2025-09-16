@@ -52,6 +52,14 @@
 	name = "Aquatic"
 	icon_state = "aqua"
 
+/datum/sprite_accessory/tail_feature/large_snake
+	icon = 'icons/mob/sprite_accessory/tail_features/large_snake_markings.dmi'
+	relevant_layers = list(BODY_BEHIND_LAYER, BODY_FRONT_LAYER)
+
+/datum/sprite_accessory/tail_feature/large_snake/underbelly
+	name = "Large Snake Underbelly"
+	icon_state = "large_snake_under"
+
 /datum/sprite_accessory/tail_feature/vox_marking
 	abstract_type = /datum/sprite_accessory/tail_feature/vox_marking
 	icon = 'icons/mob/sprite_accessory/tail_features/vox_markings.dmi'
@@ -104,7 +112,7 @@
 	icon_state = "drake_markings"
 
 /datum/sprite_accessory/tail_feature/taur/otie
-	name = "Virgo Shit Dog Markings"
+	name = "Large Hound Markings"
 	icon = 'icons/mob/sprite_accessory/tail_features/otie_markings.dmi'
 	icon_state = "otie_markings"
 

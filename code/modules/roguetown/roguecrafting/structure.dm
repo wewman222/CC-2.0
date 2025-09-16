@@ -861,11 +861,12 @@
 	verbage = "weaves"
 	craftdiff = 0
 
-/datum/crafting_recipe/roguetown/structure/respawn_portal
+// Not required with the new gem but will leave it here.
+/*/datum/crafting_recipe/roguetown/structure/respawn_portal
 	name = "reformation gate"
 	result = /obj/structure/respawn_portal
 	reqs = list(/obj/item/roguegem/blue = 1)
 	verbage_simple = "build"
 	verbage = "builds"
 	craftsound = null
-	craftdiff = 2
+	craftdiff = 2*/

@@ -1,4 +1,6 @@
-/datum/virtue/size/giant
+//Caustic edit, we have our own size categories for this instead of virtues
+
+/*/datum/virtue/size/giant
 	name = "Giant"
 	desc = "I've always been larger, stronger and hardier than the average person. I tend to lumber around a lot, and my immense size can break down frail, wooden doors."
 	added_traits = list(TRAIT_BIGGUY)
@@ -41,3 +43,4 @@
 	recipient.pass_flags = PASSTABLE | PASSMOB
 	recipient.adjust_skillrank(/datum/skill/misc/sneaking, 2, TRUE)
 	recipient.adjust_skillrank(/datum/skill/misc/stealing, 2, TRUE)
+*/

@@ -6,6 +6,8 @@
 	allowed_races = list(
 		/datum/species/human/halfelf,
 		/datum/species/elf/wood,
+		/datum/species/anthromorph,
+		/datum/species/demihuman,
 	)
 	outfit = /datum/outfit/job/roguetown/mercenary/blackoak
 	category_tags = list(CTAG_MERCENARY)

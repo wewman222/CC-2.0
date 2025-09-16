@@ -75,6 +75,8 @@
 		ignore_grab ||= TRUE
 	if(on_fire || buckled || restrained(ignore_grab = ignore_grab))
 		return TRUE
+	if(istype(loc,/obj/item/micro))
+		return TRUE
 	return FALSE
 
 /mob/living/carbon/human/proc/process_ai()

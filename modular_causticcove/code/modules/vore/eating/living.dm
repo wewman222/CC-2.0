@@ -113,7 +113,7 @@
 		attempt_msg = text("<span class='warning'>[] is attempting to make [] [] [] into their []!</span>",user,pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
 		success_msg = text("<span class='warning'>[] manages to make [] [] [] into their []!</span>",user,pred,lowertext(belly.vore_verb),prey,lowertext(belly.name))
 
-	if(!prey.Adjacent(user)) // let's not even bother attempting it yet if they aren't next to us.
+	if(!prey.Adjacent(user) && (get_turf(prey) != get_turf(user))) // let's not even bother attempting it yet if they aren't next to us.
 		return FALSE
 
 	// Announce that we start the attempt!
@@ -129,8 +129,14 @@
 	//Timer and progress bar
 	if(!do_after(user, swallow_time, TRUE, prey))
 		return FALSE // Prey escaped (or user disabled) before timer expired.
+	
+	//double check'd just in case they moved during the timer and the do_mob didn't fail for whatever reason
+	var/turf/preyturf = get_turf(prey)
+	var/turf/feederturf = get_turf(user)
+	var/adj = prey.Adjacent(user)
+	var/sameturf = preyturf == feederturf
 
-	if(!prey.Adjacent(user)) //double check'd just in case they moved during the timer and the do_mob didn't fail for whatever reason
+	if(!adj && !sameturf) // let's not even bother attempting it yet if they aren't next to us.
 		return FALSE
 
 	// If we got this far, nom successful! Announce it!
@@ -327,7 +333,9 @@
 		if(isanimal(B.owner))
 			var/mob/living/simple_animal/SA = B.owner
 			SA.update_icons()
-
+	else if(istype(loc,/obj/item/micro))
+		var/obj/item/micro/mh = loc
+		mh.dump_mob()
 	else
 		to_chat(src,"<span class='alert'>You aren't inside anyone, though, is the thing.</span>")
 

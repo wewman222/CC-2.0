@@ -53,6 +53,7 @@
 		TRAIT_BLOODLOSS_IMMUNE,
 		TRAIT_ZOMBIE_SPEECH,
 		TRAIT_ZOMBIE_IMMUNE,
+		TRAIT_NECRAS_ABATEMENT,
 		TRAIT_ROTMAN,
 		TRAIT_NORUN
 	)
@@ -184,6 +185,7 @@
 		zombie.remove_client_colour(/datum/client_colour/monochrome)
 
 		if(has_turned && become_rotman)
+			zombie.remove_status_effect(/datum/status_effect/buff/deadite_pacified)
 			zombie.STACON = max(zombie.STACON - 2, 1) //ur rotting bro
 			zombie.STASPD = max(zombie.STASPD - 3, 1)
 			zombie.STAINT = max(zombie.STAINT - 3, 1)
@@ -191,6 +193,7 @@
 				ADD_TRAIT(zombie, trait, "[type]")
 			to_chat(zombie, span_green("I no longer crave for flesh... <i>But I still feel ill.</i>"))
 		else
+			zombie.remove_status_effect(/datum/status_effect/buff/deadite_pacified)
 			if(!was_i_undead)
 				zombie.mob_biotypes &= ~MOB_UNDEAD
 			zombie.faction -= "undead"
@@ -272,7 +275,10 @@
 //Add claws here if wanted.
 
 	zombie.update_body()
-	to_chat(zombie, span_narsiesmall("Hungry... so hungry... I CRAVE FLESH!"))
+	var/area/rogue/our_area = get_area(zombie)
+	if((our_area.town_area))
+		zombie.apply_status_effect(/datum/status_effect/buff/deadite_pacified)
+	to_chat(zombie, span_narsiesmall("By the gods... what am I?!"))
 	zombie.cmode_music = 'sound/music/combat_weird.ogg'
 
 
@@ -329,6 +335,9 @@
 	if(zombie.stat >= DEAD)
 		//could not revive
 		qdel(src)
+	var/area/rogue/our_area = get_area(zombie)
+	if((our_area.town_area))
+		zombie.apply_status_effect(/datum/status_effect/buff/deadite_pacified)
 
 /datum/antagonist/zombie/greet()
 	to_chat(owner.current, span_userdanger("Death is not the end..."))

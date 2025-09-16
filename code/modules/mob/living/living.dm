@@ -247,6 +247,13 @@
 						return TRUE
 			return TRUE
 
+	if(ishuman(M) && ishuman(src))
+		var/mob/living/carbon/human/srchuman = src
+		if(srchuman.handle_micro_bump_helping(M))
+			forceMove(M.loc)
+			now_pushing = FALSE
+			return TRUE
+
 	//okay, so we didn't switch. but should we push?
 	//not if he's not CANPUSH of course
 	if(!(M.status_flags & CANPUSH))

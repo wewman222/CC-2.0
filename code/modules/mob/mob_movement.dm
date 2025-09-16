@@ -731,25 +731,30 @@
 		if(CL.armor_class == ARMOR_CLASS_HEAVY)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				return FALSE
+
 		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
 					return FALSE
+
 	if(istype(src.wear_shirt, /obj/item/clothing))
 		var/obj/item/clothing/CL = src.wear_shirt
 		if(CL.armor_class == ARMOR_CLASS_HEAVY)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				return FALSE
+
 		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
 					return FALSE
+
 	if(istype(src.wear_pants, /obj/item/clothing))
 		var/obj/item/clothing/CL = src.wear_pants
 		if(CL.armor_class == ARMOR_CLASS_HEAVY)
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				return FALSE
-		if(CL.armor_class == ARMOR_CLASS_MEDIUM)
+
+		if(CL.armor_class == ARMOR_CLASS_MEDIUM) //please use basic spacing
 			if(!HAS_TRAIT(src, TRAIT_HEAVYARMOR))
 				if(!HAS_TRAIT(src, TRAIT_MEDIUMARMOR))
 					return FALSE

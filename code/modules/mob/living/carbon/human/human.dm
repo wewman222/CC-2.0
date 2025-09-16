@@ -713,7 +713,14 @@
 		if(ismob(user.pulling))
 			user.vore_attack(user, target, src) // User, Pulled, Predator target (which can be user, pulling, or src)
 			return TRUE
-		//If they dragged themselves and we're currently aggressively grabbing them try to piggyback (not on cmode)
+	//Pick them up. Pick. Them. Up.
+	if(ishuman(target) && ishuman(user))
+		var/mob/living/carbon/human/userhuman = user
+		var/mob/living/carbon/human/targethuman = target
+		if(targethuman.small_enough(userhuman) && user.grab_state)
+			if(targethuman.attempt_scoop(userhuman))
+				return TRUE
+	//If they dragged themselves and we're currently aggressively grabbing them try to piggyback (not on cmode)
 	if(user == target && can_piggyback(target))
 		if(HAS_TRAIT(src, TRAIT_MICRO))
 			to_chat(target, span_warning("[src] is too small!"))

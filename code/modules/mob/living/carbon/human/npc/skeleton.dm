@@ -83,6 +83,8 @@
 		var/datum/outfit/OU = new skel_outfit
 		if(OU)
 			equipOutfit(OU)
+	var/obj/item/bodypart/head = get_bodypart(BODY_ZONE_HEAD)
+	head.sellprice = 20 //there's a LOT of these guys. May later change head prices depending on skeletype. Dread knights > nakeds.
 
 /datum/outfit/job/roguetown/npc/skeleton/pre_equip(mob/living/carbon/human/H)
 	..()

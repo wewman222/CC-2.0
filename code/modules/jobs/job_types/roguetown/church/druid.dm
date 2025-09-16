@@ -15,7 +15,7 @@
 
 	display_order = JDO_DRUID
 	give_bank_account = TRUE
-	min_pq = 0
+	min_pq = null
 	max_pq = null
 	round_contrib_points = 2
 	cmode_music = 'sound/music/combat_druid.ogg'

@@ -370,6 +370,16 @@
 	desc = "This is my sanctuary. I can overpower any opposition that dares breach it."
 	icon_state = "buff"
 
+/atom/movable/screen/alert/status_effect/buff/feraldebuff
+	name = "Feral Natured"
+	desc = "These civilized realms are not meant for me. I can feel the walls closing in."
+	icon_state = "debuff"
+
+/atom/movable/screen/alert/status_effect/buff/deaditepacified
+	name = "Necra's Abatement"
+	desc = "Necra's gaze weighs down upon me within these hallowed grounds. I am pacified."
+	icon_state = "debuff"
+
 /datum/status_effect/buff/wardenbuff
 	id = "wardenbuff"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/wardenbuff
@@ -391,6 +401,29 @@
 	id = "guardbuffone"
 	alert_type = /atom/movable/screen/alert/status_effect/buff/guardbuffone
 	effectedstats = list("constitution" = 1,"endurance" = 1, "speed" = 1, "perception" = 2) 
+
+/datum/status_effect/buff/feraldebuff
+	id = "feraldebuff"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/feraldebuff
+	effectedstats = list("perception" = -5, "speed" = -2, "strength" = -4, "endurance" = -4, "constitution" = -3)
+
+/datum/status_effect/buff/feraldebuff/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.town_area))
+		owner.remove_status_effect(/datum/status_effect/buff/feraldebuff)
+
+/datum/status_effect/buff/deadite_pacified
+	id = "deaditepacified"
+	alert_type = /atom/movable/screen/alert/status_effect/buff/deaditepacified
+
+/datum/status_effect/buff/deadite_pacified/process()
+
+	.=..()
+	var/area/rogue/our_area = get_area(owner)
+	if(!(our_area.town_area))
+		owner.remove_status_effect(/datum/status_effect/buff/deadite_pacified)
 
 /datum/status_effect/buff/dungeoneerbuff
 	id = "dungeoneerbuff"
@@ -418,6 +451,14 @@
 /datum/status_effect/buff/wardenbuff/on_remove()
 	. = ..()
 	REMOVE_TRAIT(owner, TRAIT_LONGSTRIDER, TRAIT_GENERIC)
+
+/datum/status_effect/buff/deadite_pacified/on_apply()
+	. = ..()
+	ADD_TRAIT(owner, TRAIT_PACIFISM, TRAIT_GENERIC)
+
+/datum/status_effect/buff/deadite_pacified/on_remove()
+	. = ..()
+	REMOVE_TRAIT(owner, TRAIT_PACIFISM, TRAIT_GENERIC)
 
 /datum/status_effect/buff/dungeoneerbuff/process()
 

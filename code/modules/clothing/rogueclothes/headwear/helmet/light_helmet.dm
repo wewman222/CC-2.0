@@ -133,6 +133,9 @@
 			pic2.color = get_altdetail_color()
 		add_overlay(pic2)
 
+/obj/item/clothing/head/roguetown/grenzelhofthat/loadout
+	desc = "Whether it's monsters or fair maidens, a true Grenzelhoftian slays both."
+	armor = ARMOR_HEAD_CLOTHING
 //................ Briar Thorns ............... //	- Dendor Briar
 /obj/item/clothing/head/roguetown/padded/briarthorns
 	name = "briar thorns"
@@ -156,3 +159,7 @@
 	sewrepair = TRUE
 	flags_inv = HIDEEARS
 	body_parts_covered = HEAD|HAIR|EARS|NOSE|EYES
+
+/obj/item/clothing/head/roguetown/mentorhat/loadout
+	armor = ARMOR_HEAD_CLOTHING
+	desc = "A bamboo hat."

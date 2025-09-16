@@ -70,7 +70,7 @@
 		/datum/customizer/bodypart_feature/face_detail,
 		/datum/customizer/bodypart_feature/underwear,
 		/datum/customizer/organ/horns/anthro,
-		/datum/customizer/organ/tail/tiefling,
+		/datum/customizer/organ/tail/demihuman,
 		/datum/customizer/organ/testicles/anthro,
 		/datum/customizer/organ/penis/anthro,
 		/datum/customizer/organ/breasts/human,

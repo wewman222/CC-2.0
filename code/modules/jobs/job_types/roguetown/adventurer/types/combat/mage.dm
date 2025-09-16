@@ -8,12 +8,13 @@
 	traits_applied = list(TRAIT_OUTLANDER)
 	classes = list("Sorcerer" = "You are a learned mage and a scholar, having spent your life studying the arcane and its ways.", 
 					"Spellblade" = "You are skilled in both the arcyne art and swordsmanship. But you are not a master of either nor could you channel your magick in armor.",			
-					"Spellsinger" = "You belong to a school of bards renowned for their study of both the arcane and the arts.")
+					"Spellsinger" = "You belong to a school of bards renowned for their study of both the arcane and the arts.",
+					"Spellthief" = "You are a back-alley thief who fell from their magical tutelage, or has stolen Noc's gift to further their own larceny.")
 
 /datum/outfit/job/roguetown/adventurer/mage/pre_equip(mob/living/carbon/human/H)
 	..()
 	H.adjust_blindness(-3)
-	var/classes = list("Sorcerer", ,"Spellblade", "Spellsinger")
+	var/classes = list("Sorcerer", ,"Spellblade", "Spellsinger", "Spellthief")
 	var/classchoice = input("Choose your archetypes", "Available archetypes") as anything in classes
 
 	switch(classchoice)
@@ -184,3 +185,58 @@
 					backr = /obj/item/rogue/instrument/viola
 				if("Vocal Talisman")
 					backr = /obj/item/rogue/instrument/vocals
+		if("Spellthief")
+			to_chat(H, span_warning("You are a rogue, either by choice or hardship. Your study of the arcyne knowledge, stolen or not, now aids in your roguish endeavors."))
+			armor = /obj/item/clothing/suit/roguetown/armor/leather
+			backl = /obj/item/storage/backpack/rogue/backpack
+			backr = /obj/item/gun/ballistic/revolver/grenadelauncher/bow
+			shoes = /obj/item/clothing/shoes/roguetown/boots
+			neck = /obj/item/storage/belt/rogue/pouch/coins/poor
+			wrists = /obj/item/clothing/wrists/roguetown/bracers/leather
+			belt = /obj/item/storage/belt/rogue/leather
+			beltl = /obj/item/quiver/Warrows
+			beltr = /obj/item/rogueweapon/mace/cudgel
+			gloves = /obj/item/clothing/gloves/roguetown/fingerless
+			pants = /obj/item/clothing/under/roguetown/trou/leather
+			shirt = /obj/item/clothing/suit/roguetown/armor/gambeson
+			cloak = /obj/item/clothing/cloak/raincloak/mortus
+			backpack_contents = list(
+				/obj/item/flashlight/flare/torch = 1,
+				/obj/item/rogueweapon/huntingknife/idagger/steel = 1,
+				/obj/item/lockpickring/mundane = 1,
+				/obj/item/recipe_book/survival = 1,
+				/obj/item/rogueweapon/scabbard/sheath = 1
+				)
+			if(H.mind)
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/prestidigitation)
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/invisibility)
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/targeted/touch/lesserknock)
+				H.mind.AddSpell(new /obj/effect/proc_holder/spell/invoked/projectile/fetch)
+			H.adjust_skillrank(/datum/skill/misc/tracking, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/knives, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/bows, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/maces, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/swimming, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/wrestling, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/combat/unarmed, 1, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/athletics, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/climbing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/sneaking, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/stealing, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/lockpicking, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/craft/traps, 3, TRUE)
+			H.adjust_skillrank(/datum/skill/misc/reading, 2, TRUE)
+			H.adjust_skillrank(/datum/skill/magic/arcane, 2, TRUE)
+			H.change_stat("strength", -1)
+			H.change_stat("intelligence", 2)
+			H.change_stat("perception", 1)
+			H.change_stat("endurance", 1)
+			H.change_stat("speed", 2)
+			H.cmode_music = 'sound/music/combat_rogue.ogg'
+			switch(H.patron?.type)
+				if(/datum/patron/inhumen/zizo)
+					H.cmode_music = 'sound/music/combat_cult.ogg'
+			H.grant_language(/datum/language/thievescant)
+			H?.mind.adjust_spellpoints(12)
+			ADD_TRAIT(H, TRAIT_DODGEEXPERT, TRAIT_GENERIC)
+			ADD_TRAIT(H, TRAIT_ARCYNE_T2, TRAIT_GENERIC)

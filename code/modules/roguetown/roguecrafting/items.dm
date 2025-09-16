@@ -439,6 +439,16 @@
 		)
 	craftdiff = 1
 
+/datum/crafting_recipe/roguetown/survival/reform_gem
+	name = "gem of reformation"
+	result = /obj/item/reformation_gem
+	reqs = list(
+		/obj/item/roguegem = 1,
+		/datum/reagent/medicine/healthpot = 15,
+		)
+	craftdiff = 2
+	subtype_reqs = TRUE
+
 // Unfortunately there's no good category for it, yet.
 // I don't want ration paper to be too expensive, making wrapped food underused
 // So instead, ration paper is a very cheap recipe with parchment and tallow (instead of full fat) that makes 2 wrapper

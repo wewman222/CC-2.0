@@ -22,6 +22,7 @@
 		/datum/sprite_accessory/tail_feature/spines/long,
 		/datum/sprite_accessory/tail_feature/spines/longmeme,
 		/datum/sprite_accessory/tail_feature/spines/aquatic,
+		/datum/sprite_accessory/tail_feature/large_snake/underbelly,
 		/datum/sprite_accessory/tail_feature/taur/lamia,
 		/datum/sprite_accessory/tail_feature/taur/horse,
 		/datum/sprite_accessory/tail_feature/taur/lizard,
@@ -35,6 +36,8 @@
 		/datum/sprite_accessory/tail_feature/taur/altnaga,
 		/datum/sprite_accessory/tail_feature/taur/altnagatailmaw,
 		/datum/sprite_accessory/tail_feature/taur/fatnaga,
+		/datum/sprite_accessory/tail_feature/taur/caustic/bunny,
+		/datum/sprite_accessory/tail_feature/taur/caustic/deerbelly,
 		)
 
 /datum/customizer/organ/tail_feature/vox_markings
@@ -66,6 +69,8 @@
 		/datum/sprite_accessory/tail_feature/taur/altnaga,
 		/datum/sprite_accessory/tail_feature/taur/altnagatailmaw,
 		/datum/sprite_accessory/tail_feature/taur/fatnaga,
+		/datum/sprite_accessory/tail_feature/taur/caustic/bunny,
+		/datum/sprite_accessory/tail_feature/taur/caustic/deerbelly,
 	)
 
 /datum/customizer/organ/tail_feature/anthro
